@@ -10,7 +10,16 @@ ENV LANG="C.UTF-8" \
     SSL_CRON="0 /2   " \
     SSL_DOMAIN="" \
     AUTO_UPDATE="false" \
-    SERVER="emby"
+    SERVER="emby" \
+    EMBY_NETWORK="emby" \
+    EMBY_APIKEY="" \
+    OPENLIST_NETWRK="openlist" \
+    OPENLIST_SPIKEY="" \
+    OPENLIST_PUB_URL="" \
+    MOUNT_PATH="" \
+    OPENLIST_SIGN_ENABLE="false" \
+    OPENLIST_EXPIRE_TIME="0"
+    
 
 # 安装git
 RUN apk --no-cache add nginx nginx-mod-http-js curl busybox git openssl logrotate tzdata && \
@@ -23,6 +32,9 @@ RUN apk --no-cache add nginx nginx-mod-http-js curl busybox git openssl logrotat
     chmod 755 /tmp/lego && \
     mv /tmp/lego / && \
     rm -rf /tmp/*
+COPY auto_config.sh /auto_config.sh
+COPY constant.js /opt/constant.js
+RUN sh /auto_config.sh
 
 COPY entrypoint /entrypoint
 COPY start_server /start_server

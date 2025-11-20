@@ -1,5 +1,5 @@
 #!/bin/bash
-
+/bin/sh /auto_config.sh
 # 启动 logrotate 并定时运行
 while true; do
     /usr/sbin/logrotate /etc/logrotate.d/medialinker

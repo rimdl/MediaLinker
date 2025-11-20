@@ -15,8 +15,8 @@ ENV LANG="C.UTF-8" \
     EMBY_PORT="8096" \
     EMBY_APIKEY="" \
     OPENLIST_NETWRK="openlist" \
-    OPENLIST_SPIKEY="" \
-    OPENLIST_PORT="5244"
+    OPENLIST_APIKEY="" \
+    OPENLIST_PORT="5244" \
     OPENLIST_PUB_URL="" \
     MOUNT_PATH="" \
     OPENLIST_SIGN_ENABLE="false" \
@@ -36,7 +36,6 @@ RUN apk --no-cache add nginx nginx-mod-http-js curl busybox git openssl logrotat
     rm -rf /tmp/*
 COPY auto_config.sh /auto_config.sh
 COPY constant.js /opt/constant.js
-RUN sh /auto_config.sh
 
 COPY entrypoint /entrypoint
 COPY start_server /start_server

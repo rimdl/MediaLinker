@@ -1,3 +1,19 @@
+# 注意：本项目已进行更改，非必要不要sync原项目！！
+* 增加以下环境变量配置项，不再需要修改constant.js文件
+* emby，openlist/alist和本项目应该加入同一docker网络，然后EMBY_NETWORK，OPENLIST_NETWRK填写对应的容器名即可，项目自动获取ip
+```shell
+    -e EMBY_NETWORK="emby" \
+    -e EMBY_PORT="8096" \
+    -e EMBY_APIKEY="xxxxx" \
+    -e OPENLIST_NETWRK="openlist" \
+    -e OPENLIST_SPIKEY="openlist-dfdfdfdsds" \
+    -e OPENLIST_PORT="5244" \
+    -e OPENLIST_PUB_URL="https://example.com" \
+    -e MOUNT_PATH="['/mnt']" \
+    -e OPENLIST_SIGN_ENABLE="false" \
+    -e OPENLIST_EXPIRE_TIME="0" \
+```
+------
 [![Github][Github-image]][Github-url]
 [![commit activity][commit-activity-image]][commit-activity-url]
 [![docker version][docker-version-image]][docker-version-url]
